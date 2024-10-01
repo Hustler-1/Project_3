@@ -6,5 +6,5 @@ meanr = function(path, column){
   if(sum(is.na(result)) == 0){
     return(result)
   } else
-    print("There are still remaining NA values. Either the function failed to catch some NA values, the data has some missing data not deliminated by NA, or the column deliminated contains nonnumeric data. Clean the data and try again.")
+    print("There are still remaining NA values. Either the function failed to catch some NA values, the data has some missing data not deliminated by NA, or the column specified contains nonnumeric or nonlogical data. Clean the data and try again.")
 }
