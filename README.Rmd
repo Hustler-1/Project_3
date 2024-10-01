@@ -1,0 +1,3 @@
+# Sample R Package
+## An example of an R package
+### Author: Calvin Whitney
