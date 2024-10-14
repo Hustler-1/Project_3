@@ -1,0 +1,19 @@
+Column Dictionary
+
+Lot #: the distinct indentification code for each sampling lot.
+
+Speciemen number: the specific speciment number given to speciemens of any given lot.
+
+SL: Standard length, the length of the fish from the tip of the snout to the posterior end of the last vertebrae.
+
+LL: Lateral line, count of scales across the fish's lateral line.
+
+TV: Transverse, a count of the the scales across the transferse of the otolith.
+
+CPD: Caudal Peduncle Depth, narrowest point between the caudal fin and the fish's body.
+
+Lip Tip: the presences of a lip tip.
+
+Scaled Opercle: the presence of a scaled opercle.
+
+Anterior Dorsal Spot: the presence of an anterior dorsal spot.
