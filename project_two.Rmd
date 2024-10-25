@@ -1,0 +1,229 @@
+---
+title: "Project Two"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+Due Oct. 25 at 11:59 PM. 
+
+For this first part of the exam, you can either use `surveys_complete.csv` or your own data. If you are using your own data, you must have data in which you think you have a numerical predictor variable and a numerical response variable. If you are using `surveys_complete`, you can use weight and hindfoot_length for this.
+
+Save this file in your `projects` directory. You can either save it in a project two subdirectory, or just put it in projects. Either way is fine.
+
+
+1) Load in your data. Which variable will you be using as a predictor, and which as a response? (5 pts)
+
+```{r}
+fish_data = read.csv("/cloud/project/data/Newmanii-LWR.csv")
+
+# the varible that I will be using as a predicter is # of lateral scales (LL) and the respone will be the the standard length (SL)
+
+```
+
+```
+# Answer which column is predictor and which is response
+
+# the sixth column (CPD) is the predictor and the forth column (SL) is the response.
+```
+
+2) Plot the two against each other with a scatter plot. Do the data appear to be related linearly? (5 pts)
+
+
+```{r}
+ggplot(fish_data, aes(x = SL, y = CPD )) + geom_point()
+```
+
+```
+# The data do not appear to be related linearally. Unless you count a zero slope!
+```
+
+
+3) Fit the linear model. View the summary. (5 pts)
+
+
+```{r}
+model_fit = lm(CPD ~ SL, data = fish_data)
+summary(model_fit)
+```
+
+4) Does the summary make sense when you compare it to the plot you made? Does our model have good predictive power? Evaluate the residual standard error, intercept, and R-Squared in particular. Would you say your predictor predicts the response?  (10 pts)
+
+
+```
+When compared to the plot that I made it does make sense. The plot show a near 0 relationship with just about zero predictive power which we see in the summary with an R-squared of -0.015 and p-value of 0.53 which is very unsignificant. Standard error seems a bit high but there are a few points that are way farther off from the others which would skew the average.
+```
+
+
+5) Plot the model on the graph. Increase the size of the text so it is comfortably readable at 5 feet. Make sure axis labels are readable and not overlapping with one another. (5 pts)
+
+```
+ggplot(fish_data, aes(x = SL, y = CPD )) + geom_point(size = 0.5) +
+     geom_smooth(method = "lm", color = "blue", size = 0.5, fill = "yellow") +
+     labs(x = "Standard Length (cm)",
+          y = "Caudal Peduncle Depth (mm)",
+          title = "Linear Progression to Predict CPD") +
+     annotate("text", 
+              x = 40, y = 29,
+              label = "R^2 == -0.015",
+              parse = TRUE,
+              color = "red", size = 5) +
+     theme_bw()
+```
+
+
+6) Check the normality of the residuals. Do they look OK? Are we violating assumptions? (5 pts)
+
+```{r}
+
+augmented_fit = broom::augment(model_fit)
+ qqnorm(augmented_fit$.resid)
+ qqline(augmented_fit$.resid, col = "red")
+ shapiro.test(augmented_fit$.resid)
+
+ # This data is not normal. Looking at the Q-Q plot we see the data is fragmented and falls off of the normal line in the middle. Also after doing a Shapiro-Wilk test the p-value was very significant showing that the data is not normal.
+```
+
+Why is normality of residuals important? 
+
+```{r}
+# The normality of the data is important since the Q-Q plot shows the relationship between your data but only if it is normally distributed
+```
+
+7) If you are using `surveys_complete`: Is there interspecific variation in the linear model? Hint: look at our prior work with facet plots. (15 pts) 
+
+If you are *not* using  `surveys_complete`: Do you think there are groupings within your data that may have a separate linear model? Try grouping the data by that variable and redoing the lm. If this would not make sense for your data, you may also attempt to do multiple predictor variables. (15 pts)
+
+```{r}
+CPD_model = lm(CPD ~ Sex, data = clean_fish_data)
+ summary(CPD_model)
+ ggplot(clean_fish_data, aes(x = Sex, y = CPD, color = Sex)) + 
+         geom_jitter() + 
+          labs(x = "Sex", y = "Caudle Peduncle Depth (mm)") +
+          theme(legend.position = "none") +
+          stat_summary(fun.data = "mean_se", 
+                                          color = "black") 
+ 
+ model_fit = lm(SL ~ LL, data = fish_data)
+ summary(model_fit)
+ ggplot(fish_data, aes(x = SL, y = CPD )) + geom_point(size = 0.5) +
+     geom_smooth(method = "lm", color = "blue", size = 0.5, fill = "yellow") +
+     labs(x = "Standard Length (cm)",
+          y = "Caudal Peduncle Depth (mm)",
+          title = "Linear Progression to Predict CPD") +
+     annotate("text", 
+              x = 40, y = 29,
+              label = "R^2 == -0.015",
+              parse = TRUE,
+              color = "red", size = 5) +
+     theme_bw()
+ 
+ s_model_fit = lm(SL ~ Sex, data = clean_fish_data)
+ summary(s_model_fit)
+ ggplot(clean_fish_data, aes(x = Sex, y = SL, color = Sex )) + geom_point(size = 0.5) +
+     geom_smooth(method = "lm", color = "blue", size = 0.5, fill = "yellow") +
+     labs(x = "Sex",
+          y = "Standard Length (cm)",
+          title = "Linear Progression to Predict Standard Length") +
+     annotate("text", 
+              x = 0.7, y = 80,
+              label = "R^2 == -0.01178",
+              parse = TRUE,
+              color = "red", size = 5)
+ 
+# For my data I believe that there are no other relationships (if any at all) in my data. Given what I have seen with the other tests and the raw data I also believe that it doesn't make sense for any other relationships to occur. I tested everything that could have had a relationship out of the variable that I selected and each of them had no relationship.
+
+```
+
+## Part Two
+
+In this portion, you are free to use your own data if you have a categorical predictor variable and a response variable. Otherwise, you may use the columns sex and weight in `surveys_complete`
+
+1) First, plot the data grouped by sex (5 pts)
+
+```{r}
+clean_fish_data = fish_data %>% 
+ drop_na()
+ ggplot(clean_fish_data, aes(x = Sex, y = SL, color = Sex)) + geom_jitter()
+
+```
+
+2) Try an ANOVA of this data (5 pt)
+
+```{r}
+anova_model_fit = aov(s_model_fit)
+ summary(anova_model_fit)
+```
+
+3) How about a linear model? What information does this give you that an ANOVA can't? (5 pts)
+
+
+```{r}
+s_model_fit = lm(SL ~ Sex, data = clean_fish_data)
+ summary(s_model_fit)
+ 
+s_augmented_model = broom::augment(s_model_fit)
+```
+
+```
+# Unfortunately with my data there is very little that the linear model can tell me that the ANOVA can't. But If there were to be a better relationship I could look at the intercept which could tell me what we standard length we would expect on average for at Sex 0 which isn't real but it allows me to find the avergae length of fish in both sexes
+```
+
+3) Plot the lm with the data, with points colored by sex. (10 pts)
+
+
+```{r}
+ ggplot(clean_fish_data, aes(x = Sex, y = SL, color = Sex)) + 
+    geom_jitter() + 
+     labs(x = "Sex", y = "Standard Length (cm)") +
+     theme(legend.position = "none") +
+     stat_summary(fun.data = "mean_se", 
+                  color = "black") 
+```
+
+4) Choose any model we've looked at so far, but use two predictor variables. Perform an LM, plot the results, and state if this changes your interpretation of the relationship between variables (10 pts)
+
+```{r}
+two_model_fit = lm(SL ~ Sex + CPD, data = clean_fish_data)
+summary(two_model_fit)
+
+two_agumented_model = broom::augment(two_model_fit)
+ qqnorm(two_agumented_model$.resid)
+ qqline(two_agumented_model$.resid, col = "red")
+ shapiro.test(two_agumented_model$.resid)
+ 
+ ggplot(clean_fish_data, aes(x = CPD, y = SL, color = Sex)) + 
+     geom_point() + 
+     labs(x = "Caudal Peduncle Depth (mm)",
+          y = "Standard Length (cm)",
+          color = "Sex") + 
+     scale_color_manual(values = c("pink", "blue")) + 
+     geom_smooth(method = "lm") +
+     annotate("text", x = 24, y = 83, label = "R^2 == -0.02917", parse=T, size=5)
+```
+
+
+```
+# The only thing that this did was make it worse. Not only does niether SL or CPD seem to relate to sex but they also seem to not relate to each other which we have alos seen above. This creates a very disjointed borderline unligible graph where both varibles seem to perpendicularly intersect with each other. SO this does not change my interpretation of the relationship.
+```
+
+## Part Three
+
+
+1) Add and commit this document (5 pts)
+
+```
+#Commands here
+```
+
+2) Push your changes to github (10 pts)
+
+```
+#Commands here
+```
+
+
+
+# MS students
+
+My expectation is that you'll do the above with your own data. If any part of this doesn't make sense with your data, please get in touch ASAP so we can pick a different classroom dataset for you.
