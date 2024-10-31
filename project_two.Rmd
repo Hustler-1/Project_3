@@ -15,7 +15,7 @@ Save this file in your `projects` directory. You can either save it in a project
 1) Load in your data. Which variable will you be using as a predictor, and which as a response? (5 pts)
 
 ```{r}
-fish_data = read.csv("/cloud/project/data/Newmanii-LWR.csv")
+fish_data = read.csv("/cloud/project/data/Newmanii fixed.csv")
 
 # the varible that I will be using as a predicter is # of lateral scales (LL) and the respone will be the the standard length (SL)
 
@@ -52,12 +52,13 @@ summary(model_fit)
 
 ```
 When compared to the plot that I made it does make sense. The plot show a near 0 relationship with just about zero predictive power which we see in the summary with an R-squared of -0.015 and p-value of 0.53 which is very unsignificant. Standard error seems a bit high but there are a few points that are way farther off from the others which would skew the average.
+
 ```
 
 
 5) Plot the model on the graph. Increase the size of the text so it is comfortably readable at 5 feet. Make sure axis labels are readable and not overlapping with one another. (5 pts)
 
-```
+```{r}
 ggplot(fish_data, aes(x = SL, y = CPD )) + geom_point(size = 0.5) +
      geom_smooth(method = "lm", color = "blue", size = 0.5, fill = "yellow") +
      labs(x = "Standard Length (cm)",
@@ -69,6 +70,8 @@ ggplot(fish_data, aes(x = SL, y = CPD )) + geom_point(size = 0.5) +
               parse = TRUE,
               color = "red", size = 5) +
      theme_bw()
+
+#AMW: What I'm getting from your, Maddy and Ben's presentations is that there are no relationships between any fish variables. 
 ```
 
 
@@ -88,6 +91,7 @@ Why is normality of residuals important?
 
 ```{r}
 # The normality of the data is important since the Q-Q plot shows the relationship between your data but only if it is normally distributed
+#AMW: But why?
 ```
 
 7) If you are using `surveys_complete`: Is there interspecific variation in the linear model? Hint: look at our prior work with facet plots. (15 pts) 

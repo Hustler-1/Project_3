@@ -1,7 +1,14 @@
+#' Removes NA values from a data column and calculates the mean.
+#'
+#' @param path The path to the tab-delimited file you to process.
+#' @param column The column of data that you wish to calculate a mean for.
+#'
+#' @return Prints a numerical mean.
+#' @export
 meanr = function(path, column){
-  result =  dataframe %>%
-    filter(!is.na({{column}})) %>%
-    pull({{column}}) %>%
+  result =  readr::read.csv(path) %>%
+    dplyr::filter(!is.na({{column}})) %>%
+    dplyr::pull({{column}}) %>%
     mean()
   if(sum(is.na(result)) == 0){
     return(result)
