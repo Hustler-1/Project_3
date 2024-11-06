@@ -1,0 +1,1 @@
+#I want this function to clean a dataset of NA values or other common missing data formats. Also I would like it to prompt the user if it detects spaces in between data entries and allow the users to change the spaces into underscores or periods.
