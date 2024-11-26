@@ -14,6 +14,24 @@ knitr::opts_chunk$set(
 )
 ```
 
+## Introducing the Basic Stats package
+
+this packages is...
+
+## Intallation Instructions
+
 ```{r setup}
+devtools::install_github("Hustler-1/Project_3")
 library(basicstats)
+```
+
+## Where to get the data
+
++ could use google sheets and give instructions for that 
++ can stash data in an R package
+
+## Using function one
+
+```{r warning=FALSE}
+basicstats::maxr()
 ```
