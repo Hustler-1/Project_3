@@ -30,8 +30,77 @@ library(basicstats)
 + could use google sheets and give instructions for that 
 + can stash data in an R package
 
-## Using function one
+## Using maxR
 
 ```{r warning=FALSE}
-basicstats::maxr()
+basicstats::maxr(path = "/cloud/project/data/crabs_test - crabs.csv", column = rear_width)#we can load in the data that we want to get a max for and then specify which data column we intend to get a max of.
+```
+## Using meanR
+
+```{r warning=FALSE}
+basicstats::meanr(path = "/cloud/project/data/crabs_test - crabs.csv", column = rear_width)#we can use the same format with meanr to get a mean value for the same data column.
+```
+
+## Using cleanR
+
+```{r warning=FALSE}
+view(surveys)#here we can see that we have a data set with many NA values.
+surveys_clean = basicstats::cleanR(data = surveys, clean_names = FALSE)#we can quickly and cleanly remove those NA throughout the whole data set.
+view(surveys_clean)
+#But what if we have a data set in which the naming conventions are not efficient e.g. using spaces in column names?
+view(cam)
+cam_names = basicstats::cleanR(data = cam, clean_names = TRUE)# we can use the clean_names argument in cleanR to correct those issues.
+view(cam_names)#now we have replaced those pesky spaces with nice periods!
+```
+
+## Using normalitycheckR
+
+```{r warning=FALSE}
+#It is important to check the normality of your data when you plan on doing any statistical tests on data sets.
+#You could run every test individually or you could use normalitycheckR to run the 3 most commonly used tests for normally distributed data.
+#This function will run the Shapiro-Wilk test, Kolmogorov-Smirnov test and the Anderson-Darling test on any data you give it.
+norm_test = rnorm(5000)#First lets make a test distribution using 5000 randomly generated data points. 
+basicstats::normalitycheckR(norm_test)#lets see what we get.
+#We can see from the output that all of the three tests came back saying that the data is normally distributed which we expected.
+basicstats::normalitycheckR(crabs$rear_width)#Now lets try this with real data
+#Here we find that while the data was capable of passing the Shapiro-Wilk test it failed on the Kolmogorov-Smirnov test.
+#this means that when compared to a normal distribution with the same mean the values in rear_width are significantly different.
+```
+
+## Using boxR
+
+```{r warning=FALSE}
+#Another way to check for normality or to just represent data is to plot it. One of the most common ways is to generate a boxplot.
+basicstats::boxR(data = crabs, x = sex, y = rear_width, title = "sex vs. rear_width", xname = "sex", yname = "rear_width", points = FALSE, savename = "test.png")#Here we can simply and easily generate a basic boxplot looking at how rear width in crabs compares to the sex. Just enter "n" when prompted in the console.
+#This function allows you to specify all of you axis titles as well as the title of the whole plot when generating.
+#It also allows for easy saving of the plot.
+basicstats::boxR(data = crabs, x = sex, y = rear_width, title = "sex vs. rear_width", xname = "sex", yname = "rear_width", points = FALSE, savename = "test.png")#If you simply enter "y" when prompted you will notice that that the plot will have been saved in you main directory.
+#Another thing you might want is to see where the actuall data points are on this plot.
+basicstats::boxR(data = crabs, x = sex, y = rear_width, title = "sex vs. rear_width", xname = "sex", yname = "rear_width", points = TRUE, savename = "test.png")#We can do this by changing the points argument to TRUE and you can choose whether or not to save this one.
+```
+
+## Using chunkR
+
+```{r warning=FALSE}
+#Now lets say you've ran your tests, gotten some simple statistics, and plotted some of the data. What if you wanted to manipulate your whole data set?
+test = basicstats::chunkR(cam_names, selection = c("Common.Name", "Count", "Subproject"), group = Common.Name, sum.name = "total")#Here we can use the cam_names data set we generated earlier to create a sub-chunk of the data set that gives use the counts of every animal spotted by the cams.
+view(test)#Now we can see the total counts of all observed species by their common names
+#It is important to note that the object in which you are grouping in the group argument can only be one thing. This function cannot handle grouping multiple things at this time.
+```
+
+## Using FstPaiR
+
+```{r warning=FALSE}
+basicstats::FstpaiR(data = gtrunchier, pcoa = FALSE)#If you have population genetic data you can use this function to get the Weir and Nei pairwise Fst values
+basicstats::FstpaiR(data = gtrunchier, pcoa = TRUE)#After getting those values you might want to plot that data to get a visualization of it. So we can use the pcoa argument to generate a pcoa plot of the data along with our raw pairwise values
+```
+
+## Using PCAPlotR
+
+```{r warning=FALSE}
+#Along with your pairwise values you might want to run a PCA analysis on the same data.
+basicstats::PCAplotR(data = iris, loadings = FALSE, clusters = FALSE)#We can use PCAplotR to quickly generate a PCA plot of the data. But what if we want the loading values to appear on the plot?
+basicstats::PCAplotR(data = iris, loadings = TRUE, clusters = FALSE)#Using the loadings argument we can add the loading values as well as their directions to the plot. But what about clusters?
+basicstats::PCAplotR(data = iris, loadings = FALSE, clusters = TRUE)#Using the clusters argument we can add colored clusters to the plot around the data points
+#It is important to note that for this function you cannot have both loadings and clusters.
 ```

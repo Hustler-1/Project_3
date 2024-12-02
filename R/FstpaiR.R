@@ -13,7 +13,7 @@ nei = hierfstat::pairwise.neifst(data[,-2],diploid=TRUE)
 weir = hierfstat::pairwise.WCfst(data[,-2],diploid=TRUE)
 if(pcoa == TRUE){
   colo<-c("black","red","blue","yellow","orange","green")
-pcoa = hierfstat::pcoa(as.matrix(genet.dist(gtrunchier[,-1])),col=rep(colo,c(5,5,4,5,5,5)))
+pcoa = hierfstat::pcoa(as.matrix(genet.dist(data[,-1])),col=rep(colo,c(5,5,4,5,5,5)))
 return(list(nei = nei, weir = weir))
 }else{
   return(list(nei = nei, weir = weir))

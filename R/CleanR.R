@@ -9,13 +9,13 @@
 #' @return saves clean data set with no NA values and clean naming conventions
 #' @export
 cleanR = function(data, clean_names){
-  na.omit(data)
+  clean = na.omit(data)
   if(clean_names == TRUE){
 directive = readline("Do you want to ajust data names, y or n?")
 if(directive == "y")
     names(data) <- make.names(names(data), unique = TRUE)
     return(data)
   }else{
-    return(data)
+    return(clean)
   }
 }

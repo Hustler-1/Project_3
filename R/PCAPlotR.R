@@ -15,7 +15,7 @@ PCAplotR = function(data, loadings ,clusters){
   pca_res <- prcomp(df, scale. = TRUE)
   PCA = ggplot2::autoplot(pca_res)
   if(loadings == TRUE){
-    loadings = ggplot2::autoplot(pca_res, data = iris, colour = 'Species',
+    loadings = ggplot2::autoplot(pca_res, data = data, colour = 'Species',
                         loadings = TRUE, loadings.colour = 'blue',
                         loadings.label = TRUE, loadings.label.size = 3)
     return(loadings)

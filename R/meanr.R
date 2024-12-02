@@ -6,7 +6,7 @@
 #' @return Prints a numerical mean.
 #' @export
 meanr = function(path, column){
-  result =  readr::read.csv(path) %>%
+  result =  readr::read_csv(path) %>%
     dplyr::filter(!is.na({{column}})) %>%
     dplyr::pull({{column}}) %>%
     mean()

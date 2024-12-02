@@ -6,7 +6,7 @@
 #' @return Prints a numerical maximum
 #' @export
 maxr = function(path, column){
-       result =  readr::read.csv(path) %>%
+       result =  readr::read_csv(path) %>%
              dplyr::filter(!is.na({{column}})) %>%
              dplyr::pull({{column}}) %>%
              max()
