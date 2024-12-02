@@ -23,6 +23,9 @@ this packages is...
 ```{r setup}
 devtools::install_github("Hustler-1/Project_3")
 library(basicstats)
+library(tibble)
+library(readr)
+library(googlesheets4)
 ```
 
 ## Where to get the data
@@ -44,10 +47,13 @@ basicstats::meanr(path = "/cloud/project/data/crabs_test - crabs.csv", column = 
 ## Using cleanR
 
 ```{r warning=FALSE}
+surveys = read_csv("portal_data_joined.csv")
 view(surveys)#here we can see that we have a data set with many NA values.
 surveys_clean = basicstats::cleanR(data = surveys, clean_names = FALSE)#we can quickly and cleanly remove those NA throughout the whole data set.
 view(surveys_clean)
 #But what if we have a data set in which the naming conventions are not efficient e.g. using spaces in column names?
+gs4_deauth()
+cam = read_sheet("https://docs.google.com/spreadsheets/d/1esrbC-QqoufjlDHXtIYtDcsXovC_x6o6Z4JfBPKvg3s/edit?usp=sharing")
 view(cam)
 cam_names = basicstats::cleanR(data = cam, clean_names = TRUE)# we can use the clean_names argument in cleanR to correct those issues.
 view(cam_names)#now we have replaced those pesky spaces with nice periods!
@@ -62,6 +68,7 @@ view(cam_names)#now we have replaced those pesky spaces with nice periods!
 norm_test = rnorm(5000)#First lets make a test distribution using 5000 randomly generated data points. 
 basicstats::normalitycheckR(norm_test)#lets see what we get.
 #We can see from the output that all of the three tests came back saying that the data is normally distributed which we expected.
+crabs = read_csv("crabs_test - crabs.csv")
 basicstats::normalitycheckR(crabs$rear_width)#Now lets try this with real data
 #Here we find that while the data was capable of passing the Shapiro-Wilk test it failed on the Kolmogorov-Smirnov test.
 #this means that when compared to a normal distribution with the same mean the values in rear_width are significantly different.

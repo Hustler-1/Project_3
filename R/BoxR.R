@@ -16,9 +16,9 @@
 #' @export
 boxR = function(data, x, y, title, xname, yname, points, savename){
   plotdata = data
-  plot = ggplot2::ggplot(data = plotdata, mapping = aes(x = {{x}}, y = {{y}})) +
+  plot = ggplot2::ggplot(data = plotdata, mapping = ggplot2::aes(x = {{x}}, y = {{y}})) +
     geom_boxplot() + theme(axis.text.x = element_text(angle = 45)) + labs(x = xname, y = yname, title = title)
-  dotplot = ggplot2::ggplot(data = plotdata, mapping = aes(x = {{x}}, y = {{y}})) +
+  dotplot = ggplot2::ggplot(data = plotdata, mapping = ggplot2::aes(x = {{x}}, y = {{y}})) +
     geom_boxplot() + theme(axis.text.x = element_text(angle = 45)) + labs(x = xname, y = yname, title = title) + geom_jitter(alpha = 0.3)
   if (points == TRUE){
     if (!is.null(plot)){
