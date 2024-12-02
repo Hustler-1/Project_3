@@ -17,9 +17,9 @@
 boxR = function(data, x, y, title, xname, yname, points, savename){
   plotdata = data
   plot = ggplot2::ggplot(data = plotdata, mapping = ggplot2::aes(x = {{x}}, y = {{y}})) +
-    ggplot2::geom_boxplot() + ggplot2::theme(axis.text.x = element_text(angle = 45)) + ggplot2::labs(x = xname, y = yname, title = title)
+    ggplot2::geom_boxplot() + ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45)) + ggplot2::labs(x = xname, y = yname, title = title)
   dotplot = ggplot2::ggplot(data = plotdata, mapping = ggplot2::aes(x = {{x}}, y = {{y}})) +
-    ggplot2::geom_boxplot() + ggplot2::theme(axis.text.x = element_text(angle = 45)) + ggplot2::labs(x = xname, y = yname, title = title) + ggplot2::geom_jitter(alpha = 0.3)
+    ggplot2::geom_boxplot() + ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45)) + ggplot2::labs(x = xname, y = yname, title = title) + ggplot2::geom_jitter(alpha = 0.3)
   if (points == TRUE){
     if (!is.null(plot)){
       directive = readline("Do you want to save plot, y or n?")
