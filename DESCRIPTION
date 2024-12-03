@@ -3,7 +3,7 @@ Title: Collection of Basic Statistical Analyses
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Calvin", family = "Whitney", email = "calvin.whitney@selu.edu", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Description:  A collection of simple statistical function for general and genetic use. You can gather very basic information like means and maximums. You can also test data for normality through the use of normality tests like the Shapiro-Wilk and Kolmogorov-Smirnov test. Finally you can gain some basic population gentics data like Fsts and do PCA analysis.
 Imports:
     dplyr,
     magrittr,

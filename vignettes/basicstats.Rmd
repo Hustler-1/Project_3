@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 ## Introducing the Basic Stats package
 
-this packages is...
+This packages is a collection of simple statistical functions that can be applied generally and for use in genetic data analysis. Examples include finding means and maximums, Fst generation, and normality tests.
 
 ## Intallation Instructions
 
