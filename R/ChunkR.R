@@ -14,6 +14,6 @@ chunkR = function(data, group, selection, sum.name){
 chunk = data %>%
   select({{selection}}) %>%
   group_by({{group}}) %>%
-  plyr::summarize(sum.name = n())
+  dplyr::summarize(sum.name = n())
 return(chunk)
 }
