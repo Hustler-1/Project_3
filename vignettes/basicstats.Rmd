@@ -31,8 +31,8 @@ library(tidyverse)
 
 ## Where to get the data
 
-+ could use google sheets and give instructions for that 
-+ can stash data in an R package
++ cam and crab datasets in the the data and vignettes folders
++ all other needed data is built into the functions themselves
 
 ## Using maxR
 
