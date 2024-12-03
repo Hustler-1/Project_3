@@ -4,9 +4,15 @@
 <url><loc>/articles/index.html</loc></url>
 <url><loc>/authors.html</loc></url>
 <url><loc>/index.html</loc></url>
+<url><loc>/reference/FstpaiR.html</loc></url>
+<url><loc>/reference/PCAplotR.html</loc></url>
+<url><loc>/reference/boxR.html</loc></url>
+<url><loc>/reference/chunkR.html</loc></url>
+<url><loc>/reference/cleanR.html</loc></url>
 <url><loc>/reference/index.html</loc></url>
 <url><loc>/reference/maxr.html</loc></url>
 <url><loc>/reference/meanr.html</loc></url>
+<url><loc>/reference/normalitycheckR.html</loc></url>
 <url><loc>/reference/pipe.html</loc></url>
 </urlset>
 

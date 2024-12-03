@@ -1,0 +1,41 @@
+---
+title: "ProjectThree"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# DUE Nov. 26 at 5 PM.
+
+The goal of project three is to get you to make significant progress on the coding aspects of the Final Project. I don't want people waiting until the last second to try coding it all the night before. That would be bad for everyone involved.
+
+# MS Students/H-Option
+
+## Part One
+
+Part One of project three will be to write the remaining custom functions for your R package. As a reminder, your package must contain:
+
++ A function to clean some data of your choice
++ A function to somehow manipulate, subset, or transform data
++ A statistical function (ANOVA, LM, other of your choosing)
++ A function that plots data
++ Two that do something else pertaining to your dissertation work.
+
+Each function must: 
+ 
++ Have appropriate input and output types
++ Do the task it's supposed to do
++ It has to *work*
++ Have some way of evaluating either the output for correctness (i.e., knowing you actually dropped the NA values), or validating input (for your graphing function, it might be easier to evaluate that the inputs are right than the graph is)
+
+## AMW: Installs cleanly from github. Things appear to generally work. It looks like you've caught all your dependencies. 
+
+## Part Two
+
++ Each function must have an appropriate header that adequately explains how the function works
++ The package must have a README file that explains what the package does and what functions are in it.
+
+## Amw: You're going to want to clean up your headers a bit - generally don't leave blank lines in your headers. Sometimes its no issue, but will occaisionally cause devtools::document() to have an absolute fit. Also, make sure your description of the package in the DESCRIPTION file gets compeleted. Otherwise, looks nice!
+
+
