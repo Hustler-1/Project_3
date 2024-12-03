@@ -27,6 +27,7 @@ library(tibble)
 library(readr)
 library(googlesheets4)
 library(tidyverse)
+library(hierfstat)
 ```
 
 ## Where to get the data
