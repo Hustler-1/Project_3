@@ -9,7 +9,6 @@
 #' @return prints a matrix of Fst values and a pcoa plot if specified
 #' @export
 FstpaiR = function(data, pcoa){
-data(gtrunchier)
   nei = hierfstat::pairwise.neifst(data[,-2],diploid=TRUE)
 weir = hierfstat::pairwise.WCfst(data[,-2],diploid=TRUE)
 if(pcoa == TRUE){
