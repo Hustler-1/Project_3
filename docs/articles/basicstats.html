@@ -44,6 +44,18 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="../articles/ProjectThree_amw.html">ProjectThree</a>
+    </li>
+  </ul>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right"></ul>
 </div>
@@ -68,8 +80,257 @@
 
     
     
+<div class="section level2">
+<h2 id="introducing-the-basic-stats-package">Introducing the Basic Stats package<a class="anchor" aria-label="anchor" href="#introducing-the-basic-stats-package"></a>
+</h2>
+<p>this packages is…</p>
+</div>
+<div class="section level2">
+<h2 id="intallation-instructions">Intallation Instructions<a class="anchor" aria-label="anchor" href="#intallation-instructions"></a>
+</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">basicstats</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"Hustler-1/Project_3"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Downloading GitHub repo Hustler-1/Project_3@HEAD</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="color: #00BBBB;">R CMD build</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────────</span></span></span>
+<span><span class="co">#&gt; * checking for file ‘/tmp/RtmpF50fTf/remotes2477cff0fb7/Hustler-1-Project_3-e4dc1e2/DESCRIPTION’ ... OK</span></span>
+<span><span class="co">#&gt; * preparing ‘basicstats’:</span></span>
+<span><span class="co">#&gt; * checking DESCRIPTION meta-information ... OK</span></span>
+<span><span class="co">#&gt; * checking for LF line-endings in source and make files and shell scripts</span></span>
+<span><span class="co">#&gt; * checking for empty or unneeded directories</span></span>
+<span><span class="co">#&gt; * looking to see if a ‘data/datalist’ file should be added</span></span>
+<span><span class="co">#&gt; * building ‘basicstats_0.0.0.9000.tar.gz’</span></span>
+<span><span class="co">#&gt; Warning: invalid uid value replaced by that for user 'nobody'</span></span>
+<span><span class="co">#&gt; Installing package into '/cloud/lib/x86_64-pc-linux-gnu-library/4.4'</span></span>
+<span><span class="co">#&gt; (as 'lib' is unspecified)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">basicstats</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/" class="external-link">tibble</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org" class="external-link">readr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://googlesheets4.tidyverse.org" class="external-link">googlesheets4</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; ── <span style="font-weight: bold;">Attaching core tidyverse packages</span> ──────────────────────── tidyverse 2.0.0 ──</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">dplyr    </span> 1.1.4     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">purrr    </span> 1.0.2</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">forcats  </span> 1.0.0     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">stringr  </span> 1.5.1</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">ggplot2  </span> 3.5.1     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">tidyr    </span> 1.3.1</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">lubridate</span> 1.9.3</span></span>
+<span><span class="co">#&gt; ── <span style="font-weight: bold;">Conflicts</span> ────────────────────────────────────────── tidyverse_conflicts() ──</span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">dplyr</span>::<span style="color: #00BB00;">filter()</span> masks <span style="color: #0000BB;">stats</span>::filter()</span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">dplyr</span>::<span style="color: #00BB00;">lag()</span>    masks <span style="color: #0000BB;">stats</span>::lag()</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use the conflicted package (<span style="color: #0000BB; font-style: italic;">&lt;http://conflicted.r-lib.org/&gt;</span>) to force all conflicts to become errors</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="where-to-get-the-data">Where to get the data<a class="anchor" aria-label="anchor" href="#where-to-get-the-data"></a>
+</h2>
+<ul>
+<li>could use google sheets and give instructions for that</li>
+<li>can stash data in an R package</li>
+</ul>
+</div>
+<div class="section level2">
+<h2 id="using-maxr">Using maxR<a class="anchor" aria-label="anchor" href="#using-maxr"></a>
+</h2>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">basicstats</span><span class="fu">::</span><span class="fu"><a href="../reference/maxr.html">maxr</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"/cloud/project/data/crabs_test - crabs.csv"</span>, column <span class="op">=</span> <span class="va">rear_width</span><span class="op">)</span><span class="co">#we can load in the data that we want to get a max for and then specify which data column we intend to get a max of.</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">200</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">7</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Delimiter:</span> ","</span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">chr</span> (2): color, sex</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">dbl</span> (5): frontal_lobe, rear_width, carapace_length, carapace_width, body_depth</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
+<span><span class="co">#&gt; [1] 20.2</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="using-meanr">Using meanR<a class="anchor" aria-label="anchor" href="#using-meanr"></a>
+</h2>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">basicstats</span><span class="fu">::</span><span class="fu"><a href="../reference/meanr.html">meanr</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"/cloud/project/data/crabs_test - crabs.csv"</span>, column <span class="op">=</span> <span class="va">rear_width</span><span class="op">)</span><span class="co">#we can use the same format with meanr to get a mean value for the same data column.</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">200</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">7</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Delimiter:</span> ","</span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">chr</span> (2): color, sex</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">dbl</span> (5): frontal_lobe, rear_width, carapace_length, carapace_width, body_depth</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
+<span><span class="co">#&gt; [1] 12.7385</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="using-cleanr">Using cleanR<a class="anchor" aria-label="anchor" href="#using-cleanr"></a>
+</h2>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">surveys</span> <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="st">"portal_data_joined.csv"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">34786</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">13</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Delimiter:</span> ","</span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">chr</span> (6): species_id, sex, genus, species, taxa, plot_type</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">dbl</span> (7): record_id, month, day, year, plot_id, hindfoot_length, weight</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
+<span><span class="fu"><a href="https://tibble.tidyverse.org/reference/view.html" class="external-link">view</a></span><span class="op">(</span><span class="va">surveys</span><span class="op">)</span><span class="co">#here we can see that we have a data set with many NA values.</span></span>
+<span><span class="va">surveys_clean</span> <span class="op">=</span> <span class="fu">basicstats</span><span class="fu">::</span><span class="fu"><a href="../reference/cleanR.html">cleanR</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">surveys</span>, clean_names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="co">#we can quickly and cleanly remove those NA throughout the whole data set.</span></span>
+<span><span class="fu"><a href="https://tibble.tidyverse.org/reference/view.html" class="external-link">view</a></span><span class="op">(</span><span class="va">surveys_clean</span><span class="op">)</span></span>
+<span><span class="co">#But what if we have a data set in which the naming conventions are not efficient e.g. using spaces in column names?</span></span>
+<span><span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/gs4_deauth.html" class="external-link">gs4_deauth</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">cam</span> <span class="op">=</span> <span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/range_read.html" class="external-link">read_sheet</a></span><span class="op">(</span><span class="st">"https://docs.google.com/spreadsheets/d/1esrbC-QqoufjlDHXtIYtDcsXovC_x6o6Z4JfBPKvg3s/edit?usp=sharing"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Reading from <span style="color: #00BBBB;">FL_cameras</span>.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Range <span style="color: #BBBB00;">FL_cameras</span>.</span></span>
+<span><span class="fu"><a href="https://tibble.tidyverse.org/reference/view.html" class="external-link">view</a></span><span class="op">(</span><span class="va">cam</span><span class="op">)</span></span>
+<span><span class="va">cam_names</span> <span class="op">=</span> <span class="fu">basicstats</span><span class="fu">::</span><span class="fu"><a href="../reference/cleanR.html">cleanR</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cam</span>, clean_names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="co"># we can use the clean_names argument in cleanR to correct those issues.</span></span>
+<span><span class="co">#&gt; Do you want to ajust data names, y or n?</span></span>
+<span><span class="fu"><a href="https://tibble.tidyverse.org/reference/view.html" class="external-link">view</a></span><span class="op">(</span><span class="va">cam_names</span><span class="op">)</span><span class="co">#now we have replaced those pesky spaces with nice periods!</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="using-normalitycheckr">Using normalitycheckR<a class="anchor" aria-label="anchor" href="#using-normalitycheckr"></a>
+</h2>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#It is important to check the normality of your data when you plan on doing any statistical tests on data sets.</span></span>
+<span><span class="co">#You could run every test individually or you could use normalitycheckR to run the 3 most commonly used tests for normally distributed data.</span></span>
+<span><span class="co">#This function will run the Shapiro-Wilk test, Kolmogorov-Smirnov test and the Anderson-Darling test on any data you give it.</span></span>
+<span><span class="va">norm_test</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">5000</span><span class="op">)</span><span class="co">#First lets make a test distribution using 5000 randomly generated data points. </span></span>
+<span><span class="fu">basicstats</span><span class="fu">::</span><span class="fu"><a href="../reference/normalitycheckR.html">normalitycheckR</a></span><span class="op">(</span><span class="va">norm_test</span><span class="op">)</span><span class="co">#lets see what we get.</span></span>
+<span><span class="co">#&gt; $shapiro</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  Shapiro-Wilk normality test</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; data:  data</span></span>
+<span><span class="co">#&gt; W = 0.99975, p-value = 0.8451</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $kolmogorov</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  Asymptotic two-sample Kolmogorov-Smirnov test</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; data:  data and mx_norm</span></span>
+<span><span class="co">#&gt; D = 0.0112, p-value = 0.9124</span></span>
+<span><span class="co">#&gt; alternative hypothesis: two-sided</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $anderson</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  Anderson-Darling test of goodness-of-fit</span></span>
+<span><span class="co">#&gt;  Null hypothesis: Normal distribution</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; data:  data</span></span>
+<span><span class="co">#&gt; An = 0.39678, p-value = 0.8519</span></span>
+<span><span class="co">#We can see from the output that all of the three tests came back saying that the data is normally distributed which we expected.</span></span>
+<span><span class="va">crabs</span> <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="st">"crabs_test - crabs.csv"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">200</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">7</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Delimiter:</span> ","</span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">chr</span> (2): color, sex</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">dbl</span> (5): frontal_lobe, rear_width, carapace_length, carapace_width, body_depth</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
+<span><span class="fu">basicstats</span><span class="fu">::</span><span class="fu"><a href="../reference/normalitycheckR.html">normalitycheckR</a></span><span class="op">(</span><span class="va">crabs</span><span class="op">$</span><span class="va">rear_width</span><span class="op">)</span><span class="co">#Now lets try this with real data</span></span>
+<span><span class="co">#&gt; [1] "data is non-normal"</span></span>
+<span><span class="co">#&gt; $shapiro</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  Shapiro-Wilk normality test</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; data:  data</span></span>
+<span><span class="co">#&gt; W = 0.9951, p-value = 0.7646</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $kolmogorov</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  Asymptotic two-sample Kolmogorov-Smirnov test</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; data:  data and mx_norm</span></span>
+<span><span class="co">#&gt; D = 0.2386, p-value = 6.19e-10</span></span>
+<span><span class="co">#&gt; alternative hypothesis: two-sided</span></span>
+<span><span class="co">#Here we find that while the data was capable of passing the Shapiro-Wilk test it failed on the Kolmogorov-Smirnov test.</span></span>
+<span><span class="co">#this means that when compared to a normal distribution with the same mean the values in rear_width are significantly different.</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="using-boxr">Using boxR<a class="anchor" aria-label="anchor" href="#using-boxr"></a>
+</h2>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#Another way to check for normality or to just represent data is to plot it. One of the most common ways is to generate a boxplot.</span></span>
+<span><span class="fu">basicstats</span><span class="fu">::</span><span class="fu"><a href="../reference/boxR.html">boxR</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">crabs</span>, x <span class="op">=</span> <span class="va">sex</span>, y <span class="op">=</span> <span class="va">rear_width</span>, title <span class="op">=</span> <span class="st">"sex vs. rear_width"</span>, xname <span class="op">=</span> <span class="st">"sex"</span>, yname <span class="op">=</span> <span class="st">"rear_width"</span>, points <span class="op">=</span> <span class="cn">FALSE</span>, savename <span class="op">=</span> <span class="st">"test.png"</span><span class="op">)</span><span class="co">#Here we can simply and easily generate a basic boxplot looking at how rear width in crabs compares to the sex. Just enter "n" when prompted in the console.</span></span>
+<span><span class="co">#&gt; Do you want to save plot, y or n?</span></span>
+<span><span class="co">#&gt; Not saving plot.</span></span></code></pre></div>
+<p><img src="basicstats_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#This function allows you to specify all of you axis titles as well as the title of the whole plot when generating.</span></span>
+<span><span class="co">#It also allows for easy saving of the plot.</span></span>
+<span><span class="fu">basicstats</span><span class="fu">::</span><span class="fu"><a href="../reference/boxR.html">boxR</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">crabs</span>, x <span class="op">=</span> <span class="va">sex</span>, y <span class="op">=</span> <span class="va">rear_width</span>, title <span class="op">=</span> <span class="st">"sex vs. rear_width"</span>, xname <span class="op">=</span> <span class="st">"sex"</span>, yname <span class="op">=</span> <span class="st">"rear_width"</span>, points <span class="op">=</span> <span class="cn">FALSE</span>, savename <span class="op">=</span> <span class="st">"test.png"</span><span class="op">)</span><span class="co">#If you simply enter "y" when prompted you will notice that that the plot will have been saved in you main directory.</span></span>
+<span><span class="co">#&gt; Do you want to save plot, y or n?</span></span>
+<span><span class="co">#&gt; Not saving plot.</span></span></code></pre></div>
+<p><img src="basicstats_files/figure-html/unnamed-chunk-6-2.png" width="700"></p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#Another thing you might want is to see where the actuall data points are on this plot.</span></span>
+<span><span class="fu">basicstats</span><span class="fu">::</span><span class="fu"><a href="../reference/boxR.html">boxR</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">crabs</span>, x <span class="op">=</span> <span class="va">sex</span>, y <span class="op">=</span> <span class="va">rear_width</span>, title <span class="op">=</span> <span class="st">"sex vs. rear_width"</span>, xname <span class="op">=</span> <span class="st">"sex"</span>, yname <span class="op">=</span> <span class="st">"rear_width"</span>, points <span class="op">=</span> <span class="cn">TRUE</span>, savename <span class="op">=</span> <span class="st">"test.png"</span><span class="op">)</span><span class="co">#We can do this by changing the points argument to TRUE and you can choose whether or not to save this one.</span></span>
+<span><span class="co">#&gt; Do you want to save plot, y or n?</span></span>
+<span><span class="co">#&gt; Not saving plot.</span></span></code></pre></div>
+<p><img src="basicstats_files/figure-html/unnamed-chunk-6-3.png" width="700"></p>
+</div>
+<div class="section level2">
+<h2 id="using-chunkr">Using chunkR<a class="anchor" aria-label="anchor" href="#using-chunkr"></a>
+</h2>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#Now lets say you've ran your tests, gotten some simple statistics, and plotted some of the data. What if you wanted to manipulate your whole data set?</span></span>
+<span><span class="va">test</span> <span class="op">=</span> <span class="fu">basicstats</span><span class="fu">::</span><span class="fu"><a href="../reference/chunkR.html">chunkR</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cam_names</span>, selection <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Common.Name"</span>, <span class="st">"Count"</span>, <span class="st">"Subproject"</span><span class="op">)</span>, group <span class="op">=</span> <span class="va">Common.Name</span>, sum.name <span class="op">=</span> <span class="st">"total"</span><span class="op">)</span><span class="co">#Here we can use the cam_names data set we generated earlier to create a sub-chunk of the data set that gives use the counts of every animal spotted by the cams.</span></span>
+<span><span class="fu"><a href="https://tibble.tidyverse.org/reference/view.html" class="external-link">view</a></span><span class="op">(</span><span class="va">test</span><span class="op">)</span><span class="co">#Now we can see the total counts of all observed species by their common names</span></span>
+<span><span class="co">#It is important to note that the object in which you are grouping in the group argument can only be one thing. This function cannot handle grouping multiple things at this time.</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="using-fstpair">Using FstPaiR<a class="anchor" aria-label="anchor" href="#using-fstpair"></a>
+</h2>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://www.r-project.org" class="external-link">"hierfstat"</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gtrunchier</span><span class="op">)</span><span class="co">#first we need to get the data from hierfstat.</span></span>
+<span><span class="fu">basicstats</span><span class="fu">::</span><span class="fu"><a href="../reference/FstpaiR.html">FstpaiR</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">gtrunchier</span>, pcoa <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="co">#If you have population genetic data you can use this function to get the Weir and Nei pairwise Fst values</span></span>
+<span><span class="co">#&gt; $nei</span></span>
+<span><span class="co">#&gt;        1      2      3      4      5      6</span></span>
+<span><span class="co">#&gt; 1     NA 0.4746 0.4274 0.4459 0.3349 0.4129</span></span>
+<span><span class="co">#&gt; 2 0.4746     NA 0.7577 0.7725 0.6095 0.7159</span></span>
+<span><span class="co">#&gt; 3 0.4274 0.7577     NA 0.6236 0.5717 0.5317</span></span>
+<span><span class="co">#&gt; 4 0.4459 0.7725 0.6236     NA 0.5202 0.4670</span></span>
+<span><span class="co">#&gt; 5 0.3349 0.6095 0.5717 0.5202     NA 0.5130</span></span>
+<span><span class="co">#&gt; 6 0.4129 0.7159 0.5317 0.4670 0.5130     NA</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $weir</span></span>
+<span><span class="co">#&gt;           1         2         3         4         5         6</span></span>
+<span><span class="co">#&gt; 1        NA 0.4695425 0.4194788 0.4486061 0.3356973 0.3992087</span></span>
+<span><span class="co">#&gt; 2 0.4695425        NA 0.7795719 0.7648904 0.5994008 0.7563057</span></span>
+<span><span class="co">#&gt; 3 0.4194788 0.7795719        NA 0.6321912 0.5688411 0.5308519</span></span>
+<span><span class="co">#&gt; 4 0.4486061 0.7648904 0.6321912        NA 0.5199231 0.4776794</span></span>
+<span><span class="co">#&gt; 5 0.3356973 0.5994008 0.5688411 0.5199231        NA 0.5065197</span></span>
+<span><span class="co">#&gt; 6 0.3992087 0.7563057 0.5308519 0.4776794 0.5065197        NA</span></span>
+<span><span class="fu">basicstats</span><span class="fu">::</span><span class="fu"><a href="../reference/FstpaiR.html">FstpaiR</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">gtrunchier</span>, pcoa <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="co">#After getting those values you might want to plot that data to get a visualization of it. So we can use the pcoa argument to generate a pcoa plot of the data along with our raw pairwise values</span></span></code></pre></div>
+<p><img src="basicstats_files/figure-html/unnamed-chunk-8-1.png" width="768"></p>
+<pre><code><span><span class="co">#&gt; $nei</span></span>
+<span><span class="co">#&gt;        1      2      3      4      5      6</span></span>
+<span><span class="co">#&gt; 1     NA 0.4746 0.4274 0.4459 0.3349 0.4129</span></span>
+<span><span class="co">#&gt; 2 0.4746     NA 0.7577 0.7725 0.6095 0.7159</span></span>
+<span><span class="co">#&gt; 3 0.4274 0.7577     NA 0.6236 0.5717 0.5317</span></span>
+<span><span class="co">#&gt; 4 0.4459 0.7725 0.6236     NA 0.5202 0.4670</span></span>
+<span><span class="co">#&gt; 5 0.3349 0.6095 0.5717 0.5202     NA 0.5130</span></span>
+<span><span class="co">#&gt; 6 0.4129 0.7159 0.5317 0.4670 0.5130     NA</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $weir</span></span>
+<span><span class="co">#&gt;           1         2         3         4         5         6</span></span>
+<span><span class="co">#&gt; 1        NA 0.4695425 0.4194788 0.4486061 0.3356973 0.3992087</span></span>
+<span><span class="co">#&gt; 2 0.4695425        NA 0.7795719 0.7648904 0.5994008 0.7563057</span></span>
+<span><span class="co">#&gt; 3 0.4194788 0.7795719        NA 0.6321912 0.5688411 0.5308519</span></span>
+<span><span class="co">#&gt; 4 0.4486061 0.7648904 0.6321912        NA 0.5199231 0.4776794</span></span>
+<span><span class="co">#&gt; 5 0.3356973 0.5994008 0.5688411 0.5199231        NA 0.5065197</span></span>
+<span><span class="co">#&gt; 6 0.3992087 0.7563057 0.5308519 0.4776794 0.5065197        NA</span></span></code></pre>
+</div>
+<div class="section level2">
+<h2 id="using-pcaplotr">Using PCAPlotR<a class="anchor" aria-label="anchor" href="#using-pcaplotr"></a>
+</h2>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#Along with your pairwise values you might want to run a PCA analysis on the same data.</span></span>
+<span><span class="fu">basicstats</span><span class="fu">::</span><span class="fu"><a href="../reference/PCAplotR.html">PCAplotR</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">iris</span>, loadings <span class="op">=</span> <span class="cn">FALSE</span>, clusters <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="co">#We can use PCAplotR to quickly generate a PCA plot of the data. But what if we want the loading values to appear on the plot?</span></span>
+<span><span class="fu">basicstats</span><span class="fu">::</span><span class="fu"><a href="../reference/PCAplotR.html">PCAplotR</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">iris</span>, loadings <span class="op">=</span> <span class="cn">TRUE</span>, clusters <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="co">#Using the loadings argument we can add the loading values as well as their directions to the plot. But what about clusters?</span></span>
+<span><span class="fu">basicstats</span><span class="fu">::</span><span class="fu"><a href="../reference/PCAplotR.html">PCAplotR</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">iris</span>, loadings <span class="op">=</span> <span class="cn">FALSE</span>, clusters <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="co">#Using the clusters argument we can add colored clusters to the plot around the data points</span></span>
+<span><span class="co">#It is important to note that for this function you cannot have both loadings and clusters.</span></span></code></pre></div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
