@@ -26,6 +26,7 @@ library(basicstats)
 library(tibble)
 library(readr)
 library(googlesheets4)
+library(tidyverse)
 ```
 
 ## Where to get the data
@@ -88,23 +89,25 @@ basicstats::boxR(data = crabs, x = sex, y = rear_width, title = "sex vs. rear_wi
 
 ## Using chunkR
 
-```{r warning=FALSE}
+```{r eval=FALSE}
 #Now lets say you've ran your tests, gotten some simple statistics, and plotted some of the data. What if you wanted to manipulate your whole data set?
-test = basicstats::chunkR(cam_names, selection = c("Common.Name", "Count", "Subproject"), group = Common.Name, sum.name = "total")#Here we can use the cam_names data set we generated earlier to create a sub-chunk of the data set that gives use the counts of every animal spotted by the cams.
+test = basicstats::chunkR(data = cam_names, selection = c("Common.Name", "Count", "Subproject"), group = Common.Name, sum.name = "total")#Here we can use the cam_names data set we generated earlier to create a sub-chunk of the data set that gives use the counts of every animal spotted by the cams.
 view(test)#Now we can see the total counts of all observed species by their common names
 #It is important to note that the object in which you are grouping in the group argument can only be one thing. This function cannot handle grouping multiple things at this time.
 ```
 
 ## Using FstPaiR
 
-```{r warning=FALSE}
+```{r fig.height=8, fig.width=8, warning=FALSE}
+library("hierfstat")
+data(gtrunchier)#first we need to get the data from hierfstat.
 basicstats::FstpaiR(data = gtrunchier, pcoa = FALSE)#If you have population genetic data you can use this function to get the Weir and Nei pairwise Fst values
 basicstats::FstpaiR(data = gtrunchier, pcoa = TRUE)#After getting those values you might want to plot that data to get a visualization of it. So we can use the pcoa argument to generate a pcoa plot of the data along with our raw pairwise values
 ```
 
 ## Using PCAPlotR
 
-```{r warning=FALSE}
+```{r eval=FALSE}
 #Along with your pairwise values you might want to run a PCA analysis on the same data.
 basicstats::PCAplotR(data = iris, loadings = FALSE, clusters = FALSE)#We can use PCAplotR to quickly generate a PCA plot of the data. But what if we want the loading values to appear on the plot?
 basicstats::PCAplotR(data = iris, loadings = TRUE, clusters = FALSE)#Using the loadings argument we can add the loading values as well as their directions to the plot. But what about clusters?
