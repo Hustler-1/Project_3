@@ -34,6 +34,8 @@ library(hierfstat)
 
 + cam and crab datasets in the the data and vignettes folders
 + all other needed data is built into the functions themselves
++ download.file("https://raw.githubusercontent.com/Hustler-1/Project_3/refs/heads/main/data/crabs_test%20-%20crabs.csv", "/cloud/project/data/crustacean.csv")
++ download.file("https://github.com/Hustler-1/Project_3/blob/main/data/portal_data_joined.csv", "project/data/surveys.csv")
 
 ## Using maxR
 
